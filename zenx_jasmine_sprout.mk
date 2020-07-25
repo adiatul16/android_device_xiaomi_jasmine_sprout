@@ -20,20 +20,21 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
-#TWRP
-BUILD_TWRP := false
+
+#ABI check
+export SKIP_ABI_CHECKS=true
 
 #AOSP SU
 WITH_SU := false
 
 #Build type
-CUSTOM_BUILD_TYPE=OFFICIAL
+ZENX_BUILD_TYPE=UNOFFICIAL
 
 # Inherit device configuration
 $(call inherit-product, device/xiaomi/jasmine_sprout/device.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+$(call inherit-product, vendor/zenx/config/common_full_phone.mk)
 
 # Define first api level
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
@@ -52,6 +53,9 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Device identifier
 PRODUCT_BRAND := xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_NAME := aosp_jasmine_sprout
+PRODUCT_NAME := zenx_jasmine_sprout
 PRODUCT_DEVICE := jasmine_sprout
 PRODUCT_MODEL := Mi A2
+
+#TWRP
+BUILD_TWRP := true
